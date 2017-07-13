@@ -1,0 +1,43 @@
+{
+  "name": "lynda-srt",
+  "description": "Generate all of subtitle files from a course url on https://lynda.com",
+  "version": "0.0.1",
+  "author": "Rong Shen <rong.shen@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jacobbubu/lynda-srt.git"
+  },
+  "bin": {
+    "lynda-srt": "cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/jacobbubu/lynda-srt/issues"
+  },
+  "keywords": [
+    "lynda.com",
+    "subtitle",
+    "srt",
+    "transcript",
+    "playlist",
+    "m3u"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "coffee --compile --bare --output lib/ src/"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "date-fns": "^1.28.5",
+    "nconf": "^0.8.4",
+    "nightmare": "^2.10.0",
+    "pify": "^3.0.0",
+    "sanitize-filename": "^1.6.1"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.0.0-beta3"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 7.6.0"
+  }
+}

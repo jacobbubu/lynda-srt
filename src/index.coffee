@@ -5,6 +5,7 @@ Nightmare = require 'nightmare'
 cheerio = require 'cheerio'
 sanitize = require 'sanitize-filename'
 pify = require 'pify'
+{ isWebUri } = require 'valid-url'
 
 login = require './login'
 getDocument = require './getDocument'
@@ -16,23 +17,30 @@ exeName = require('../package.json').name
 
 DefaultViewport = [1280, 800]
 
-nconf.argv().env()
+nconf.env({whitelist: [
+    'lyndauser'
+    'lyndapass'
+]}).argv()
 
-courseUrl = nconf.get 'course'
-username = nconf.get 'username'
-password = nconf.get 'password'
+courseUrl = nconf.get('_')[0]
+username = nconf.get 'lyndauser'
+password = nconf.get 'lyndapass'
 show = nconf.get('show') ? false
 
 if !courseUrl or !username or !password
-    console.log """
+    console.warn """
         Arguments requried, using command-line arguments:
 
-            #{exeName} --username your_account --password your_password --course https://www.lynda.com/ZBrush...
+            #{exeName} --lyndauser your_account --lyndapass your_password https://www.lynda.com/ZBrush...
 
         or environment variables:
 
-            username=your_account password=your_password #{exeName} --course https://www.lynda.com/ZBrush...
+            lyndauser=your_account lyndapass=your_password #{exeName} https://www.lynda.com/ZBrush...
     """
+    process.exit -1
+
+if !isWebUri(courseUrl)
+    console.warn 'Invalid course url.'
     process.exit -1
 
 getNightmare = ->

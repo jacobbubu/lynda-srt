@@ -6,19 +6,19 @@ Generate all of subtitle files from a course url on [lynda.com](https://lynda.co
 ```
 npm i lynda-srt -g
 cd path-to-subtitle
-lynda-srt --username your-account --password your-password --course https://www.lynda.com/ZBrush-tutorials/ZBrush-4R8-New-Features/441599-2.html
+lynda-srt --lyndauser your-account --lyndapass your-password --course https://www.lynda.com/ZBrush-tutorials/ZBrush-4R8-New-Features/441599-2.html
 ```
 ** you must have a [lynda.com](https://lynda.com) account befroe run `lynda-srt`. **
 
 or using environment variables:
 ```
-username=your_account password=your_password your-password lynda-srt --course https://www.lynda.com/ZBrush-tutorials/ZBrush-4R8-New-Features/441599-2.html
+lyndauser=your_account lyndapass=your_password your-lyndapass lynda-srt --course https://www.lynda.com/ZBrush-tutorials/ZBrush-4R8-New-Features/441599-2.html
 ```
 
 You may also add a `--show` switch for showing a browser window:
 
 ```
-lynda-srt --show --username your-account --password your-password --course https://www.lynda.co...
+lynda-srt --show --lyndauser your-account --lyndapass your-password --course https://www.lynda.co...
 ```
 
 Output:

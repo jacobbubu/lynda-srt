@@ -1,7 +1,7 @@
 {
   "name": "lynda-srt",
   "description": "Generate all of subtitle files from a course url on https://lynda.com",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "Rong Shen <rong.shen@gmail.com>",
   "repository": {
     "type": "git",
@@ -23,8 +23,13 @@
   ],
   "main": "lib/index.js",
   "scripts": {
-    "build": "coffee --compile --bare --output lib/ src/"
+    "build": "coffee --compile --bare --output lib/ src/",
+    "prepublish": "npm run build"
   },
+  "files": [
+    "lib",
+    "cli.js"
+  ],
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "date-fns": "^1.28.5",
